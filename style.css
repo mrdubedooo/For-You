@@ -1,0 +1,784 @@
+/* =========================================================
+   iOS 26 INSPIRED — LIQUID GLASS / WARM BROWN THEME
+========================================================= */
+
+:root {
+    --bg: #15110f;
+    --bg-2: #211914;
+
+    --text: #f8f3ed;
+    --muted: #b9aaa0;
+
+    --brown: #a9856d;
+    --brown-light: #d2b49d;
+    --cream: #eee0d2;
+    --pink: #d49a9a;
+
+    --glass: rgba(255, 246, 237, 0.075);
+    --glass-strong: rgba(255, 246, 237, 0.11);
+
+    --border: rgba(255, 244, 232, 0.16);
+    --border-light: rgba(255, 255, 255, 0.22);
+
+    --shadow: rgba(0, 0, 0, 0.35);
+
+    --radius: 28px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Poppins", sans-serif;
+
+    color: var(--text);
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(180, 135, 105, 0.18),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(170, 120, 105, 0.13),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(130, 95, 75, 0.14),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #110e0c,
+            #1b1512 50%,
+            #100d0b
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   SUBTLE GRAIN / ATMOSPHERE
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 50;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color: rgba(210, 160, 145, 0.42);
+
+    font-size: 16px;
+
+    animation: floatHeart linear forwards;
+
+    filter: blur(0.2px);
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            translateX(40px)
+            rotate(180deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    isolation: isolate;
+}
+
+
+/* soft glass glow behind hero */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+
+    height: 520px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 159, 133, 0.18),
+            transparent 68%
+        );
+
+    filter: blur(35px);
+
+    z-index: -1;
+}
+
+
+.hero-content {
+    width: min(850px, 100%);
+
+    padding: 60px 45px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.035)
+        );
+
+    backdrop-filter: blur(35px) saturate(130%);
+
+    -webkit-backdrop-filter: blur(35px) saturate(130%);
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 30px 80px var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* glass reflection */
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    top: -80px;
+    left: -20%;
+
+    width: 140%;
+    height: 150px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.10),
+            transparent
+        );
+
+    transform: rotate(-5deg);
+
+    pointer-events: none;
+}
+
+
+.small-title {
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 10px;
+
+    color: var(--brown-light);
+
+    margin-bottom: 18px;
+}
+
+
+.hero h1 {
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(65px, 10vw, 115px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6e8dc,
+            #d7b39c,
+            #f6e8dc
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.hero h1 span {
+    color: #d89d91;
+}
+
+
+.hero-text {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    max-width: 540px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   LIQUID GLASS BUTTON
+========================================================= */
+
+.music-button {
+    margin-top: 32px;
+
+    padding: 13px 24px;
+
+    border-radius: 18px;
+
+    border: 1px solid var(--border-light);
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.14),
+            rgba(255,255,255,0.055)
+        );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.14),
+        0 10px 30px rgba(0,0,0,0.2);
+
+    cursor: pointer;
+
+    font-family: "Poppins";
+
+    font-size: 13px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.music-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(210,170,145,0.22),
+            rgba(255,255,255,0.07)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 15px 35px rgba(0,0,0,0.3);
+}
+
+.music-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    width: min(700px, calc(100% - 40px));
+
+    margin: auto;
+
+    text-align: center;
+
+    padding: 110px 20px 70px;
+}
+
+
+.section-label {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: var(--brown-light);
+
+    margin-bottom: 15px;
+}
+
+
+.intro h2,
+.love-card h2 {
+    font-family: "Great Vibes", cursive;
+
+    font-size: 58px;
+
+    font-weight: 400;
+
+    color: var(--cream);
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+
+.intro > p:last-child {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-section {
+    width: min(1200px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 30px 0 110px;
+}
+
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   PHOTO CARD — LIQUID GLASS
+========================================================= */
+
+.photo-card {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.095),
+            rgba(255,255,255,0.035)
+        );
+
+    backdrop-filter: blur(25px) saturate(125%);
+
+    -webkit-backdrop-filter: blur(25px) saturate(125%);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.photo-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(222,190,170,0.28);
+
+    box-shadow:
+        0 30px 65px rgba(0,0,0,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+
+.photo-card img {
+    width: 100%;
+
+    height: 430px;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter:
+        saturate(0.88)
+        contrast(0.97)
+        sepia(0.08);
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+
+.photo-card:hover img {
+    transform: scale(1.025);
+
+    filter:
+        saturate(0.95)
+        contrast(1)
+        sepia(0.05);
+}
+
+
+/* =========================================================
+   PHOTO INFORMATION
+========================================================= */
+
+.photo-info {
+    padding: 23px 24px 26px;
+}
+
+
+.photo-info span {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--brown-light);
+}
+
+
+.photo-info h3 {
+    margin-top: 7px;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    color: var(--cream);
+}
+
+
+.photo-info p {
+    color: #a99d94;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   LOVE SECTION
+========================================================= */
+
+.love-section {
+    padding: 90px 20px 120px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.love-card {
+    width: min(750px, 100%);
+
+    padding: 60px 45px;
+
+    text-align: center;
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.09),
+            rgba(182,135,108,0.055)
+        );
+
+    backdrop-filter: blur(30px) saturate(130%);
+
+    -webkit-backdrop-filter: blur(30px) saturate(130%);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+
+.heart-icon {
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 0 auto 24px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(207,156,137,0.20),
+            rgba(255,255,255,0.06)
+        );
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    color: #d89d91;
+
+    font-size: 25px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+
+.love-card h2 {
+    margin-bottom: 25px;
+}
+
+
+.love-card > p:last-child {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+
+.love-card strong {
+    color: #d8a59a;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+
+    padding: 35px 20px 55px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+
+    color: #847870;
+
+    font-size: 11px;
+}
+
+
+footer span {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #c09a83;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 100vh;
+
+        padding: 18px;
+    }
+
+
+    .hero-content {
+        padding: 50px 25px;
+
+        border-radius: 24px;
+    }
+
+
+    .hero h1 {
+        font-size: 68px;
+    }
+
+
+    .hero-text {
+        font-size: 13px;
+    }
+
+
+    .intro {
+        padding-top: 80px;
+    }
+
+
+    .intro h2,
+    .love-card h2 {
+        font-size: 48px;
+    }
+
+
+    .gallery {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .photo-card {
+        border-radius: 24px;
+    }
+
+
+    .photo-card img {
+        height: 380px;
+    }
+
+
+    .love-card {
+        padding: 50px 25px;
+
+        border-radius: 24px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
